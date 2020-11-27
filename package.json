@@ -1,0 +1,33 @@
+{
+  "name": "tisson-front",
+  "version": "1.0.0",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
+    "inquirer": "^6.2.2",
+    "ora": "^3.2.0"
+  },
+  "bin": {
+    "tisson": "./bin/tisson",
+    "tisson-add": "bin/tisson-add",
+    "tisson-list": "bin/tisson-list",
+    "tisson-init": "bin/tisson-init"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sliu59/uni-template.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "sliu59",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sliu59/uni-template/issues"
+  },
+  "homepage": "https://github.com/sliu59/uni-template#readme"
+}
