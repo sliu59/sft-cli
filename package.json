@@ -1,6 +1,6 @@
 {
-  "name": "tisson-front",
-  "version": "1.0.0",
+  "name": "lklocker-cli",
+  "version": "1.0.1",
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
@@ -9,10 +9,10 @@
     "ora": "^3.2.0"
   },
   "bin": {
-    "tisson": "./bin/tisson",
-    "tisson-add": "bin/tisson-add",
-    "tisson-list": "bin/tisson-list",
-    "tisson-init": "bin/tisson-init"
+    "lklocker": "./bin/lklocker",
+    "lklocker-add": "bin/lklocker-add",
+    "lklocker-list": "bin/lklocker-list",
+    "lklocker-init": "bin/lklocker-init"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
