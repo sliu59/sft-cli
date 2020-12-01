@@ -12,7 +12,8 @@
     "lklocker": "./bin/lklocker",
     "lklocker-add": "bin/lklocker-add",
     "lklocker-list": "bin/lklocker-list",
-    "lklocker-init": "bin/lklocker-init"
+    "lklocker-init": "bin/lklocker-init",
+    "lklocker-change": "bin/lklocker-change"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+// 交互式命令行
+const inquirer = require("inquirer");
+// 修改控制台字符串的样式
+const chalk = require("chalk");
+// node 内置文件模块
+const fs = require("fs");
+// 读取根目录下的 template.json
+const tplObj = require(`${__dirname}/../template.json`);
+
+// 自定义交互式命令行的问题及简单的校验
+let question = [
+  {
+    name: "name",
+    type: "input",
+    message: "请输入想修改的模板名称",
+    validate(val) {
+      if (val === "") {
+        return "Name is required!";
+      } else if (tplObj.hasOwnProperty(val)) {
+        return true;
+      } else {
+        return "Name is not find,Please enter right template name!";
+      }
+    },
+  },
+  {
+    name: "nName",
+    type: "input",
+    message: "请输入新的名称",
+    validate(val) {
+      if (val === "") {
+        return "Name is required!";
+      } else {
+        return true;
+      }
+    },
+  },
+  {
+    name: "url",
+    type: "input",
+    message: "请输入需修改的模板地址,并确保地址有效",
+    // validate(val) {
+    //   // if (val === '') return 'The url is required!'
+    //   return true;
+    // },
+  },
+];
+
+inquirer.prompt(question).then((answers) => {
+  // answers 就是用户输入的内容，是个对象
+  let { name, url, nName } = answers;
+  let key = `${name}`;
+  let keyMap = {
+    [key]: nName,
+  };
+  // 有修改则修改,无添加url则无需修改,使用默认
+  if (url != "") tplObj[name] = url;
+  // 修改文件中存在的模板名称
+  for (let key in tplObj) {
+    var newKey = keyMap[key];
+    if (newKey) {
+      tplObj[newKey] = tplObj[key];
+      delete tplObj[key];
+    }
+  }
+  // 把模板信息写入 template.json 文件中
+  fs.writeFile(
+    `${__dirname}/../template.json`,
+    JSON.stringify(tplObj),
+    "utf-8",
+    (err) => {
+      if (err) console.log(err);
+      console.log("\n");
+      console.log(chalk.green("Change successfully!\n"));
+      console.log(tplObj);
+      console.log("\n");
+    }
+  );
+});
